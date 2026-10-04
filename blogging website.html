@@ -1,0 +1,1751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VRAJ BLOG | Blogs & Stories</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f8fc;
+            color: #171923;
+            transition: 0.4s;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid #e5e7eb;
+
+            padding: 18px 7%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-decoration: none;
+        }
+
+        .logo h1 {
+            font-size: 28px;
+            letter-spacing: 4px;
+            font-weight: 800;
+            color: #111827;
+        }
+
+        .logo p {
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: #6366f1;
+            margin-top: 3px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #374151;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #6366f1;
+        }
+
+        .dark-button {
+            border: none;
+            background: #111827;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 620px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 80px 8%;
+
+            background:
+                radial-gradient(circle at 80% 20%, #818cf8 0, transparent 25%),
+                radial-gradient(circle at 20% 80%, #c084fc 0, transparent 25%),
+                linear-gradient(135deg, #111827, #312e81);
+
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            width: 650px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+
+            padding: 9px 16px;
+            border-radius: 30px;
+
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .hero h2 {
+            font-size: 64px;
+            line-height: 1.05;
+            margin-bottom: 25px;
+        }
+
+        .hero h2 span {
+            color: #a5b4fc;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #e5e7eb;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .hero-primary {
+            padding: 14px 24px;
+            border: none;
+            border-radius: 8px;
+            background: white;
+            color: #312e81;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .hero-secondary {
+            padding: 14px 24px;
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 8px;
+            background: transparent;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .hero-primary:hover,
+        .hero-secondary:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Floating decoration */
+
+        .hero-circle {
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            right: 7%;
+            top: 100px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+
+            box-shadow: 0 0 100px rgba(129,140,248,0.3);
+        }
+
+        .hero-card {
+            position: absolute;
+            right: 12%;
+            top: 190px;
+
+            width: 280px;
+            padding: 25px;
+
+            border-radius: 18px;
+
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(20px);
+
+            border: 1px solid rgba(255,255,255,0.2);
+
+            transform: rotate(5deg);
+        }
+
+        .hero-card small {
+            color: #c7d2fe;
+        }
+
+        .hero-card h3 {
+            margin: 15px 0;
+            font-size: 22px;
+        }
+
+        /* ================= SEARCH ================= */
+
+        .search-area {
+            width: 85%;
+            max-width: 900px;
+
+            margin: -35px auto 0;
+
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-box {
+            background: white;
+            padding: 8px;
+
+            border-radius: 15px;
+
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+
+            display: flex;
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+
+            padding: 15px;
+
+            font-size: 15px;
+        }
+
+        .search-box button {
+            border: none;
+            background: #6366f1;
+            color: white;
+
+            padding: 0 25px;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* ================= SECTION ================= */
+
+        .section {
+            width: 86%;
+            max-width: 1250px;
+            margin: 90px auto;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            font-size: 35px;
+        }
+
+        .section-heading p {
+            color: #6b7280;
+            margin-top: 7px;
+        }
+
+        /* ================= CATEGORY ================= */
+
+        .categories {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 35px;
+        }
+
+        .category-btn {
+            border: 1px solid #e5e7eb;
+            background: white;
+
+            padding: 10px 18px;
+
+            border-radius: 30px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+            color: #4b5563;
+
+            transition: 0.3s;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: #6366f1;
+            color: white;
+            border-color: #6366f1;
+        }
+
+        /* ================= FEATURED BLOG ================= */
+
+        .featured {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+
+            background: white;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            box-shadow: 0 10px 35px rgba(0,0,0,0.07);
+
+            margin-bottom: 55px;
+        }
+
+        .featured-image {
+            min-height: 350px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 100px;
+
+            background:
+                linear-gradient(135deg,#6366f1,#8b5cf6);
+        }
+
+        .featured-content {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-label {
+            color: #6366f1;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .featured-content h2 {
+            font-size: 34px;
+            margin: 15px 0;
+        }
+
+        .featured-content p {
+            color: #6b7280;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .featured-content button {
+            width: fit-content;
+
+            border: none;
+            background: #111827;
+            color: white;
+
+            padding: 12px 20px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+        }
+
+        /* ================= BLOG GRID ================= */
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .blog-card {
+            background: white;
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+
+            transition: 0.35s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+        }
+
+        .blog-image {
+            height: 190px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 70px;
+        }
+
+        .tech {
+            background: linear-gradient(135deg,#dbeafe,#818cf8);
+        }
+
+        .education {
+            background: linear-gradient(135deg,#fef3c7,#f59e0b);
+        }
+
+        .gaming {
+            background: linear-gradient(135deg,#ede9fe,#8b5cf6);
+        }
+
+        .travel {
+            background: linear-gradient(135deg,#cffafe,#06b6d4);
+        }
+
+        .blog-content {
+            padding: 24px;
+        }
+
+        .blog-category {
+            font-size: 11px;
+            font-weight: bold;
+            color: #6366f1;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .blog-content h3 {
+            font-size: 21px;
+            margin: 10px 0;
+        }
+
+        .blog-content p {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .blog-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-top: 20px;
+            padding-top: 15px;
+
+            border-top: 1px solid #eee;
+        }
+
+        .read-btn {
+            border: none;
+            background: none;
+            color: #6366f1;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .like-btn {
+            border: none;
+            background: #f3f4f6;
+
+            padding: 7px 12px;
+
+            border-radius: 20px;
+
+            cursor: pointer;
+        }
+
+        .delete-btn {
+            border: none;
+            background: #fee2e2;
+            color: #dc2626;
+
+            padding: 7px 12px;
+
+            border-radius: 20px;
+
+            cursor: pointer;
+        }
+
+        /* ================= CREATE BLOG ================= */
+
+        .create-wrapper {
+            background: linear-gradient(135deg,#111827,#312e81);
+
+            padding: 60px;
+
+            border-radius: 25px;
+
+            color: white;
+        }
+
+        .create-wrapper h2 {
+            font-size: 35px;
+            margin-bottom: 8px;
+        }
+
+        .create-wrapper > p {
+            color: #c7d2fe;
+            margin-bottom: 30px;
+        }
+
+        .blog-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 14px;
+
+            border: 1px solid #4b5563;
+
+            border-radius: 8px;
+
+            background: rgba(255,255,255,0.08);
+
+            color: white;
+
+            outline: none;
+
+            font-family: Arial;
+        }
+
+        .form-group select option {
+            color: black;
+        }
+
+        .form-group textarea {
+            height: 140px;
+            resize: vertical;
+        }
+
+        .publish-btn {
+            grid-column: 1 / -1;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: white;
+            color: #312e81;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .publish-btn:hover {
+            background: #e0e7ff;
+        }
+
+        /* ================= MODAL ================= */
+
+        .modal {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 2000;
+
+            background: rgba(0,0,0,0.7);
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+        }
+
+        .modal-content {
+            width: 90%;
+            max-width: 650px;
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 40px;
+
+            position: relative;
+
+            animation: popup 0.3s ease;
+        }
+
+        @keyframes popup {
+
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+        }
+
+        .close {
+            position: absolute;
+
+            right: 20px;
+            top: 15px;
+
+            font-size: 30px;
+
+            cursor: pointer;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 20px;
+        }
+
+        .modal-content p {
+            color: #6b7280;
+            line-height: 1.8;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #0f172a;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 45px 20px;
+        }
+
+        footer h2 {
+            letter-spacing: 3px;
+        }
+
+        footer p {
+            color: #94a3b8;
+            margin-top: 10px;
+        }
+
+        /* ================= DARK MODE ================= */
+
+        body.dark {
+            background: #0b1120;
+            color: white;
+        }
+
+        body.dark header {
+            background: rgba(15,23,42,0.92);
+            border-color: #1e293b;
+        }
+
+        body.dark .logo h1,
+        body.dark nav a {
+            color: white;
+        }
+
+        body.dark .search-box,
+        body.dark .featured,
+        body.dark .blog-card {
+            background: #111827;
+            color: white;
+        }
+
+        body.dark .search-box input {
+            background: transparent;
+            color: white;
+        }
+
+        body.dark .category-btn {
+            background: #111827;
+            color: #d1d5db;
+            border-color: #374151;
+        }
+
+        body.dark .blog-content p,
+        body.dark .featured-content p {
+            color: #9ca3af;
+        }
+
+        body.dark .blog-footer {
+            border-color: #374151;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1000px) {
+
+            .hero h2 {
+                font-size: 50px;
+            }
+
+            .hero-card,
+            .hero-circle {
+                display: none;
+            }
+
+            .featured {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 500px;
+                padding: 60px 7%;
+            }
+
+            .hero h2 {
+                font-size: 40px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .search-box {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .search-box button {
+                padding: 12px;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading {
+                display: block;
+            }
+
+            .featured-content {
+                padding: 30px;
+            }
+
+            .create-wrapper {
+                padding: 30px 20px;
+            }
+
+            .blog-form {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full,
+            .publish-btn {
+                grid-column: auto;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+
+        <a href="#home" class="logo">
+
+            <h1>VRAJ BLOG</h1>
+
+            <p>BLOGS • STORIES • IDEAS</p>
+
+        </a>
+
+
+        <nav>
+
+            <a href="#home">Home</a>
+
+            <a href="#blogs">Blogs</a>
+
+            <a href="#create">Create Blog</a>
+
+            <button class="dark-button"
+                    onclick="toggleDarkMode()">
+                🌙
+            </button>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="hero-tag">
+                ✦ Welcome to my blogging space
+            </div>
+
+            <h2>
+                Ideas that
+                <span>inspire.</span>
+            </h2>
+
+            <p>
+                Welcome to VRAJ BLOG — a place where
+                technology, education, gaming, travel and
+                interesting ideas come together.
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <button
+                    class="hero-primary"
+                    onclick="document.getElementById('blogs').scrollIntoView()">
+
+                    Explore Blogs →
+
+                </button>
+
+
+                <button
+                    class="hero-secondary"
+                    onclick="document.getElementById('create').scrollIntoView()">
+
+                    Write a Blog
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-circle"></div>
+
+
+        <div class="hero-card">
+
+            <small>FEATURED ARTICLE</small>
+
+            <h3>
+                The Future of Technology
+            </h3>
+
+            <p>
+                Discover how technology is changing
+                our world.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SEARCH ================= -->
+
+    <div class="search-area">
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search articles, topics and stories..."
+                onkeyup="searchBlogs()">
+
+            <button>
+                🔍 Search
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= BLOG SECTION ================= -->
+
+    <section class="section" id="blogs">
+
+
+        <div class="section-heading">
+
+            <div>
+
+                <h2>Explore Stories</h2>
+
+                <p>
+                    Read something interesting today.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- CATEGORY -->
+
+        <div class="categories">
+
+            <button
+                class="category-btn active"
+                onclick="filterBlogs('All',this)">
+                All
+            </button>
+
+            <button
+                class="category-btn"
+                onclick="filterBlogs('Technology',this)">
+                Technology
+            </button>
+
+            <button
+                class="category-btn"
+                onclick="filterBlogs('Education',this)">
+                Education
+            </button>
+
+            <button
+                class="category-btn"
+                onclick="filterBlogs('Gaming',this)">
+                Gaming
+            </button>
+
+            <button
+                class="category-btn"
+                onclick="filterBlogs('Travel',this)">
+                Travel
+            </button>
+
+        </div>
+
+
+        <!-- FEATURED -->
+
+        <div class="featured">
+
+            <div class="featured-image">
+                💡
+            </div>
+
+            <div class="featured-content">
+
+                <span class="featured-label">
+                    FEATURED STORY
+                </span>
+
+                <h2>
+                    How Technology is Shaping Our Future
+                </h2>
+
+                <p>
+                    Technology is changing the way we
+                    communicate, learn, work and solve
+                    everyday problems. From Artificial
+                    Intelligence to cloud computing,
+                    the future is becoming more connected.
+                </p>
+
+                <button
+                    onclick="readBlog(
+                    'How Technology is Shaping Our Future',
+                    'Technology is changing the way we communicate, learn, work and solve everyday problems. Artificial Intelligence, cloud computing, robotics and modern software are creating new opportunities for students and professionals.'
+                    )">
+
+                    Read Full Story →
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- BLOG GRID -->
+
+        <div class="blog-grid" id="blogContainer">
+
+
+            <!-- BLOG 1 -->
+
+            <article
+                class="blog-card"
+                data-category="Technology">
+
+                <div class="blog-image tech">
+                    💻
+                </div>
+
+                <div class="blog-content">
+
+                    <span class="blog-category">
+                        Technology
+                    </span>
+
+                    <h3>
+                        Future of Technology
+                    </h3>
+
+                    <p>
+                        Discover how modern technology is
+                        changing our everyday life.
+                    </p>
+
+
+                    <div class="blog-footer">
+
+                        <button
+                            class="read-btn"
+                            onclick="readBlog(
+                            'Future of Technology',
+                            'Modern technology is developing very quickly. Artificial Intelligence, cloud computing, robotics and software development are changing the way people work, learn and communicate.'
+                            )">
+
+                            Read More →
+
+                        </button>
+
+
+                        <div>
+
+                            <button
+                                class="like-btn"
+                                onclick="likeBlog(this)">
+                                ❤️ <span>0</span>
+                            </button>
+
+                            <button
+                                class="delete-btn"
+                                onclick="deleteBlog(this)">
+                                ×
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- BLOG 2 -->
+
+            <article
+                class="blog-card"
+                data-category="Education">
+
+                <div class="blog-image education">
+                    📚
+                </div>
+
+                <div class="blog-content">
+
+                    <span class="blog-category">
+                        Education
+                    </span>
+
+                    <h3>
+                        Power of Education
+                    </h3>
+
+                    <p>
+                        Education gives us knowledge, skills
+                        and confidence to build our future.
+                    </p>
+
+
+                    <div class="blog-footer">
+
+                        <button
+                            class="read-btn"
+                            onclick="readBlog(
+                            'Power of Education',
+                            'Education plays an important role in our life. It provides knowledge, improves communication skills and helps students create better opportunities for their future.'
+                            )">
+
+                            Read More →
+
+                        </button>
+
+
+                        <div>
+
+                            <button
+                                class="like-btn"
+                                onclick="likeBlog(this)">
+                                ❤️ <span>0</span>
+                            </button>
+
+                            <button
+                                class="delete-btn"
+                                onclick="deleteBlog(this)">
+                                ×
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- BLOG 3 -->
+
+            <article
+                class="blog-card"
+                data-category="Gaming">
+
+                <div class="blog-image gaming">
+                    🎮
+                </div>
+
+                <div class="blog-content">
+
+                    <span class="blog-category">
+                        Gaming
+                    </span>
+
+                    <h3>
+                        Evolution of Gaming
+                    </h3>
+
+                    <p>
+                        From simple games to advanced
+                        interactive experiences.
+                    </p>
+
+
+                    <div class="blog-footer">
+
+                        <button
+                            class="read-btn"
+                            onclick="readBlog(
+                            'Evolution of Gaming',
+                            'Gaming has changed greatly over the years. Modern games use advanced graphics, physics, sound and interactive systems to create engaging experiences.'
+                            )">
+
+                            Read More →
+
+                        </button>
+
+
+                        <div>
+
+                            <button
+                                class="like-btn"
+                                onclick="likeBlog(this)">
+                                ❤️ <span>0</span>
+                            </button>
+
+                            <button
+                                class="delete-btn"
+                                onclick="deleteBlog(this)">
+                                ×
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- BLOG 4 -->
+
+            <article
+                class="blog-card"
+                data-category="Travel">
+
+                <div class="blog-image travel">
+                    ✈️
+                </div>
+
+                <div class="blog-content">
+
+                    <span class="blog-category">
+                        Travel
+                    </span>
+
+                    <h3>
+                        Benefits of Travelling
+                    </h3>
+
+                    <p>
+                        Explore new places, cultures and
+                        experiences through travelling.
+                    </p>
+
+
+                    <div class="blog-footer">
+
+                        <button
+                            class="read-btn"
+                            onclick="readBlog(
+                            'Benefits of Travelling',
+                            'Travelling gives us an opportunity to explore new places, meet different people and learn about different cultures and traditions.'
+                            )">
+
+                            Read More →
+
+                        </button>
+
+
+                        <div>
+
+                            <button
+                                class="like-btn"
+                                onclick="likeBlog(this)">
+                                ❤️ <span>0</span>
+                            </button>
+
+                            <button
+                                class="delete-btn"
+                                onclick="deleteBlog(this)">
+                                ×
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CREATE BLOG ================= -->
+
+    <section class="section" id="create">
+
+        <div class="create-wrapper">
+
+            <h2>
+                Share Your Story
+            </h2>
+
+            <p>
+                Have something interesting to say?
+                Create your own blog.
+            </p>
+
+
+            <form
+                class="blog-form"
+                onsubmit="addBlog(event)">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Blog Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="blogTitle"
+                        placeholder="Enter your blog title"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Category
+                    </label>
+
+                    <select
+                        id="blogCategory"
+                        required>
+
+                        <option value="">
+                            Select Category
+                        </option>
+
+                        <option value="Technology">
+                            Technology
+                        </option>
+
+                        <option value="Education">
+                            Education
+                        </option>
+
+                        <option value="Gaming">
+                            Gaming
+                        </option>
+
+                        <option value="Travel">
+                            Travel
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Your Story
+                    </label>
+
+                    <textarea
+                        id="blogContent"
+                        placeholder="Write your blog here..."
+                        required></textarea>
+
+                </div>
+
+
+                <button
+                    class="publish-btn"
+                    type="submit">
+
+                    Publish Your Blog →
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MODAL ================= -->
+
+    <div
+        class="modal"
+        id="blogModal">
+
+        <div class="modal-content">
+
+            <span
+                class="close"
+                onclick="closeModal()">
+
+                ×
+
+            </span>
+
+            <h2 id="modalTitle">
+                Blog Title
+            </h2>
+
+            <p id="modalText">
+                Blog content
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <h2>
+            VRAJ BLOG
+        </h2>
+
+        <p>
+            Blogs • Stories • Ideas
+        </p>
+
+        <p>
+            © 2026 VRAJ BLOG | Created by Vraj
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+
+        /* SEARCH */
+
+        function searchBlogs() {
+
+            let search =
+                document.getElementById("searchInput")
+                .value
+                .toLowerCase();
+
+            let cards =
+                document.querySelectorAll(".blog-card");
+
+
+            cards.forEach(function(card) {
+
+                let text =
+                    card.innerText.toLowerCase();
+
+                if (text.includes(search)) {
+
+                    card.style.display = "block";
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+
+        /* FILTER */
+
+        function filterBlogs(category, button) {
+
+            let cards =
+                document.querySelectorAll(".blog-card");
+
+            let buttons =
+                document.querySelectorAll(".category-btn");
+
+
+            buttons.forEach(function(btn) {
+
+                btn.classList.remove("active");
+
+            });
+
+
+            button.classList.add("active");
+
+
+            cards.forEach(function(card) {
+
+                if (
+                    category === "All" ||
+                    card.dataset.category === category
+                ) {
+
+                    card.style.display = "block";
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+
+        /* READ MORE */
+
+        function readBlog(title, content) {
+
+            document.getElementById("modalTitle")
+                .innerText = title;
+
+            document.getElementById("modalText")
+                .innerText = content;
+
+            document.getElementById("blogModal")
+                .style.display = "flex";
+
+        }
+
+
+        /* CLOSE MODAL */
+
+        function closeModal() {
+
+            document.getElementById("blogModal")
+                .style.display = "none";
+
+        }
+
+
+        /* LIKE */
+
+        function likeBlog(button) {
+
+            let count =
+                button.querySelector("span");
+
+            let number =
+                parseInt(count.innerText);
+
+            count.innerText =
+                number + 1;
+
+        }
+
+
+        /* DELETE */
+
+        function deleteBlog(button) {
+
+            let card =
+                button.closest(".blog-card");
+
+            card.remove();
+
+        }
+
+
+        /* ADD BLOG */
+
+        function addBlog(event) {
+
+            event.preventDefault();
+
+
+            let title =
+                document.getElementById("blogTitle")
+                .value;
+
+            let category =
+                document.getElementById("blogCategory")
+                .value;
+
+            let content =
+                document.getElementById("blogContent")
+                .value;
+
+
+            let container =
+                document.getElementById("blogContainer");
+
+
+            let icon = "📝";
+
+
+            if (category === "Technology") {
+
+                icon = "💻";
+
+            }
+
+            else if (category === "Education") {
+
+                icon = "📚";
+
+            }
+
+            else if (category === "Gaming") {
+
+                icon = "🎮";
+
+            }
+
+            else if (category === "Travel") {
+
+                icon = "✈️";
+
+            }
+
+
+            let card =
+                document.createElement("article");
+
+
+            card.className = "blog-card";
+
+            card.dataset.category = category;
+
+
+            let shortText =
+                content.length > 100
+                ? content.substring(0,100) + "..."
+                : content;
+
+
+            card.innerHTML = `
+
+                <div class="blog-image ${category.toLowerCase()}">
+                    ${icon}
+                </div>
+
+                <div class="blog-content">
+
+                    <span class="blog-category">
+                        ${category}
+                    </span>
+
+                    <h3>
+                        ${title}
+                    </h3>
+
+                    <p>
+                        ${shortText}
+                    </p>
+
+                    <div class="blog-footer">
+
+                        <button
+                            class="read-btn"
+                            onclick="readBlog(
+                            '${title.replace(/'/g, "\\'")}',
+                            '${content.replace(/'/g, "\\'")}'
+                            )">
+
+                            Read More →
+
+                        </button>
+
+                        <div>
+
+                            <button
+                                class="like-btn"
+                                onclick="likeBlog(this)">
+                                ❤️ <span>0</span>
+                            </button>
+
+                            <button
+                                class="delete-btn"
+                                onclick="deleteBlog(this)">
+                                ×
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(card);
+
+
+            document.getElementById("blogTitle")
+                .value = "";
+
+            document.getElementById("blogCategory")
+                .value = "";
+
+            document.getElementById("blogContent")
+                .value = "";
+
+
+            alert("Your blog has been published!");
+
+        }
+
+
+        /* DARK MODE */
+
+        function toggleDarkMode() {
+
+            document.body.classList.toggle("dark");
+
+        }
+
+
+        /* CLOSE MODAL OUTSIDE */
+
+        window.onclick = function(event) {
+
+            let modal =
+                document.getElementById("blogModal");
+
+            if (event.target === modal) {
+
+                modal.style.display = "none";
+
+            }
+
+        };
+
+    </script>
+
+
+</body>
+</html>
